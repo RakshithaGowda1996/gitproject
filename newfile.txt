@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - My Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0f172a;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #1e293b;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #38bdf8;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #f472b6;
+    }
+
+    section {
+      padding: 60px 20px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-in-out;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      background-color: #1e293b;
+      padding: 20px;
+      font-size: 14px;
+      color: #94a3b8;
+      margin-top: 50px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #38bdf8, #f472b6);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>About My Website</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section id="intro">
+    <h2>Who Am I?</h2>
+    <p>I’m a passionate web developer who loves creating modern, fast, and interactive websites.</p>
+    <button onclick="scrollToSection('mission')">Know More</button>
+  </section>
+
+  <section id="mission">
+    <h2>My Mission</h2>
+    <p>To help people and businesses grow by building user-friendly digital experiences.</p>
+  </section>
+
+  <section id="vision">
+    <h2>My Vision</h2>
+    <p>To continuously learn, evolve, and innovate in the world of web development.</p>
+  </section>
+
+  <footer>
+    © <span id="year"></span> My Website | Designed by You
+  </footer>
+
+  <script>
+    // Scroll reveal animation
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(section => observer.observe(section));
+
+    // Smooth scroll
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Dynamic year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
